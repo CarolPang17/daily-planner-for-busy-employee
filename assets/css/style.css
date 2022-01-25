@@ -69,3 +69,34 @@ textarea{
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
+.container {
+  border: 5px solid red;
+  margin-bottom: 10em;
+}
+.one-row {
+  border: 5px solid blue;
+  margin-top: 1em;
+  height: 2em;
+  display: table;
+}
+
+.row-up {
+  display: table-cell;
+}
+
+.time {
+  border: 5px solid #77dd77;
+  width: 10em;
+}
+
+.typing-space {
+  border: 5px solid orange;
+  width: 40em;
+}
+
+.save-btn {
+  border: 5px solid yellow;
+  width: 20em;
+}
+
