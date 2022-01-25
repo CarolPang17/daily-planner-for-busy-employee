@@ -90,13 +90,23 @@ textarea{
   width: 10em;
 }
 
+.typing-box {
+  border: 5px solid purple;
+  width: 40em;
+
+}
+
 .typing-space {
   border: 5px solid orange;
-  width: 40em;
+  max-width: 30em;
 }
 
 .save-btn {
   border: 5px solid yellow;
   width: 20em;
+}
+
+.hide {
+  display: none;
 }
 

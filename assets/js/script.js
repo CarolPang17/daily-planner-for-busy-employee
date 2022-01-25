@@ -1,10 +1,17 @@
+// var print = moment().add(3, 'hours');
+// var print2 = print.format('h ');
+//  console.log("print2 : || ",print2 + "AM" )
+// var testing = print2 + "AM"
+//  if(testing === "5 AM"){
+//    console.log("testing is correct")
+//  } else {
+//    console.log("you got it wrong")
+//  }
 
+var nowTime = "3:45pm"
 
-console.log(moment());
+$(".one-row").append(`<div class="time row-up">${nowTime}</div>`);
 
-var a = moment('2016-01-01');
-var b = a.clone().add(1, 'week');
+$(".one-row").append('<div class=" typing-box row-up"><div class="typing-space " ></div></div>');
 
-console.log(a);
-
-console.log(b);
+$(".one-row").append('<div class="save-btn row-up"></div>');
