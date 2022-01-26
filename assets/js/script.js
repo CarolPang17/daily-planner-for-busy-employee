@@ -28,11 +28,16 @@ function addRow(i) {
     '<div class=" typing-box row-up"><div class="typing-space " ></div></div>'
   );
 
-  $(`.row${i}`).append('<div class="save-btn row-up"></div>');
+  // $(`.row${i}`).append('<div class="save-btn-box row-up"><button src="#" class="save-btn"></button></div>');
+
+  var tryImg = '<input type="image" class="save-img" src="/assets/images/save-as.png" />'
+
+  $(`.row${i}`).append(`<div class="save-btn-box row-up">${tryImg}</div>`);
+
 }
 
 for (var i = 1; i < 10; i++) {
   addRow(i);
 }
 
-//$('.save-btn').addClass('blueBack')
+

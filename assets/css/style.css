@@ -89,22 +89,32 @@ textarea{
   border: 5px solid #77dd77;
   width: 10em;
   text-align: center;
+  vertical-align: middle;
+  /* display: inline-block; */
 }
 
 .typing-box {
   border: 5px solid purple;
   width: 40em;
-
 }
 
 .typing-space {
   border: 5px solid orange;
+  width: 30em;
+  height: 2em;
   max-width: 30em;
 }
 
-.save-btn {
+.save-btn-box {
   border: 5px solid yellow;
   width: 20em;
+  height: 3em;
+  text-align: center;
+}
+
+.save-img {
+  max-width: 2em;
+  max-height: 2em;
 }
 
 .hide {
