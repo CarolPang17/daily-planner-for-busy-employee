@@ -21,23 +21,42 @@ function addRow(i) {
   }
   $(".table").append(`<div class="one-row row${i}"></div>`);
 
-  $(`.row${i}`).append(`<div class="time row-up">${    regularHour
-}</div>`);
+  $(`.row${i}`).append(`<div class="time row-up">${regularHour}</div>`);
 
   $(`.row${i}`).append(
-    '<div class=" typing-box row-up"><div class="typing-space " ></div></div>'
+    `<div class=" typing-box typing-box-${i} row-up"><input class="typing-space typing-space-${i}" type="text" id="field${i}" name="fname"></div>`
   );
 
-  // $(`.row${i}`).append('<div class="save-btn-box row-up"><button src="#" class="save-btn"></button></div>');
+  $(`.row${i}`).append(`<div class="save-btn-box row-up"><input type="image" class="save-img" id="save-btn-${i}" src="/assets/images/save-as.png" /></div>`);
 
-  var tryImg = '<input type="image" class="save-img" src="/assets/images/save-as.png" />'
+}
+var field = {};
+var fs = {};
 
-  $(`.row${i}`).append(`<div class="save-btn-box row-up">${tryImg}</div>`);
+for (var i = 1; i < 10; i++) {
+  //create row one by one
+  addRow(i);
 
 }
 
 for (var i = 1; i < 10; i++) {
-  addRow(i);
+  //create storage key one by one
+  field[i] = document.getElementById(`field${i}`);
+  console.log("--in for loop || i = ", i);
+  addFs(i);
+
+  document.getElementById(`save-btn-${i}`).addEventListener("click", fs[i]);
+
+  if (sessionStorage.getItem(`autosave${i}`)) {
+    field[i].value = sessionStorage.getItem(`autosave${i}`);
+  }
 }
 
+
+function addFs(btnNum) {
+  fs[btnNum] = function () {
+    console.log("save btn  clicked || i or btnNum :", btnNum);
+    sessionStorage.setItem(`autosave${btnNum}`, field[btnNum].value);
+  };
+}
 
