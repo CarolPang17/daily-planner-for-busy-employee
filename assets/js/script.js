@@ -19,15 +19,17 @@ function addRow(i) {
   } else {
     regularHour = i+8 + " am";
   }
-  $(".table").append(`<div class="one-row row${i}"></div>`);
 
-  $(`.row${i}`).append(`<div class="time row-up">${regularHour}</div>`);
+
+  $(".table").append(`<div class="row row${i}"></div>`);
+
+  $(`.row${i}`).append(`<div class="time-block col "><div class="hour ">${regularHour}</div></div>`);
 
   $(`.row${i}`).append(
-    `<div class=" typing-box typing-box-${i} row-up"><input class="typing-space typing-space-${i}" type="text" id="field${i}" name="fname"></div>`
+    `<div class=" col-6 typing-box-${i} "><input class="textarea typing-space-${i}" type="text" id="field${i}" name="fname"></div>`
   );
 
-  $(`.row${i}`).append(`<div class="save-btn-box row-up"><input type="image" class="save-img" id="save-btn-${i}" src="/assets/images/save-as.png" /></div>`);
+  $(`.row${i}`).append(`<div class="col  saveBtn "><input type="image" class="save-img " id="save-btn-${i}" src="/assets/images/save-as.png" /></div>`);
 
 }
 var field = {};
