@@ -4,29 +4,25 @@ body {
   line-height: 1;
 }
 
-.jumbotron {
-  border: 5px solid green;
-}
 
 .table {
   margin-bottom: 10em;
 }
 
 .row {
-  border: 5px solid #DC8F61;
+  border: 3px solid #DC8F61;
   height: 3em;
   width: 90%;
   margin: 0 auto;
 }
 
 .col {
-  background-color: powderblue;
   display: flex;
   justify-content: center;
 }
 
 .col-6 {
-  border: 5px solid #DC8F61;
+  border: 3px solid #DC8F61;
 }
 
 
@@ -52,4 +48,14 @@ input, input:focus, textarea:focus, select:focus{
 }
 
 
+.becomeGrey {
+  background-color: grey;
+}
 
+.becomeGreen {
+  background-color: #AFDDC3;
+}
+
+.becomeBlue {
+  background-color: aqua;
+}

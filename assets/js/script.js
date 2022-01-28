@@ -1,14 +1,4 @@
-// var print = moment().add(3, 'hours');
-// var print2 = print.format('h ');
-//  console.log("print2 : || ",print2 + "AM" )
-// var testing = print2 + "AM"
-//  if(testing === "5 AM"){
-//    console.log("testing is correct")
-//  } else {
-//    console.log("you got it wrong")
-//  }
 
-var nowTime = moment().format("h");
 
 function addRow(i) {
   var regularHour;
@@ -23,15 +13,47 @@ function addRow(i) {
 
   $(".table").append(`<div class="row row${i}"></div>`);
 
-  $(`.row${i}`).append(`<div class="time-block col "><div class="hour ">${regularHour}</div></div>`);
+  $(`.row${i}`).append(`<div id="time-block-${i}" class =" col "><div class="hour ">${regularHour}</div></div>`);
 
   $(`.row${i}`).append(
     `<div class=" col-6 typing-box-${i} "><input class="textarea typing-space-${i}" type="text" id="field${i}" name="fname"></div>`
   );
 
-  $(`.row${i}`).append(`<div class="col  saveBtn "><input type="image" class="save-img " id="save-btn-${i}" src="/assets/images/save-as.png" /></div>`);
+  $(`.row${i}`).append(`<div class="col  saveBtn-${i} "><input type="image" class="save-img " id="save-btn-${i}" src="/assets/images/save-as.png" /></div>`);
 
+
+  var nowTime = moment().format('h ');
+  var nowHour = parseInt(nowTime)
+
+  var splitTheNum = regularHour.split(" ")
+  var numOnly = parseInt(splitTheNum[0]);
+
+  if(numOnly < 9){
+    if(numOnly === nowHour) {
+      addColor("becomeGreen",i);
+    } else if(numOnly < nowHour) {
+      addColor("becomeGrey",i);
+    } else {
+      addColor("becomeBlue",i);
+    }
+  } else {
+    if(numOnly === nowHour) {
+      addColor("becomeGreen",i);
+    } else if(numOnly > nowHour) {
+      addColor("becomeGrey",i);
+    } else {
+      addColor("becomeBlue",i);
+    }
+  }
 }
+
+//add class to chow color function
+
+function addColor(color,i){
+  $(`#time-block-${i},.typing-box-${i}, .saveBtn-${i}`).addClass(color)
+}
+////////////////////////////////////////
+
 var field = {};
 var fs = {};
 
@@ -44,7 +66,6 @@ for (var i = 1; i < 10; i++) {
 for (var i = 1; i < 10; i++) {
   //create storage key one by one
   field[i] = document.getElementById(`field${i}`);
-  console.log("--in for loop || i = ", i);
   addFs(i);
 
   document.getElementById(`save-btn-${i}`).addEventListener("click", fs[i]);
@@ -61,4 +82,7 @@ function addFs(btnNum) {
     sessionStorage.setItem(`autosave${btnNum}`, field[btnNum].value);
   };
 }
+
+/////////////////////////////////
+//Time feature below//
 
