@@ -21,39 +21,24 @@ function addRow(i) {
   $(`.row${i}`).append(
     `<div class="col  saveBtn-${i} "><input type="image" class="save-img " id="save-btn-${i}" src="/assets/images/save-as.png" /></div>`
   );
-
-  var nowTime = moment().format("h");
+//set current actual hour to be 24hr format
+  var nowTime = moment().format("HH");
   var nowHour = parseInt(nowTime);
 
-  var splitTheNum = regularHour.split(" ");
-  var officeHourNumOnly = parseInt(splitTheNum[0]);
+//set table show hour to be 24hr format
+  var regularHour24 = i + 8;
 
-  if (officeHourNumOnly === nowHour) {
+//add class to chow color function by compare actual hour and table hour
+  if (regularHour24 === nowHour) {
     addColor("becomeGreen", i);
+  } else if (regularHour24 < nowHour) {
+    addColor("becomeGrey", i);
+  } else {
+    addColor("becomeBlue", i);
   }
-  ///// below from 1 pm to 5 pm ////
-  else if (officeHourNumOnly < 9) {
-    if (officeHourNumOnly < nowHour) {
-      addColor("becomeGrey", i);
-      addColor("becomeGrey", i);
-      $(`#field${i}`).addClass("hide");
-    } else {
-      addColor("becomeBlue", i);
-    }
-  }
-  ///// below from 9 am to 12 pm ////
-  else {
-    if (officeHourNumOnly > nowHour) {
-      addColor("becomeGrey", i);
-      $(`#field${i}`).addClass("hide");
-    } else {
-      addColor("becomeBlue", i);
-    }
-  }
-}
+};
 
-//add class to chow color function
-
+//function of doing the work of adding color
 function addColor(color, i) {
   $(`#time-block-${i},.typing-box-${i}, .saveBtn-${i}`).addClass(color);
 }
@@ -79,19 +64,18 @@ for (var i = 1; i < 10; i++) {
   }
 }
 
+
+//context changes once the button clicked
 function addFs(btnNum) {
   fs[btnNum] = function () {
-    console.log("save btn  clicked || i or btnNum :", btnNum);
     sessionStorage.setItem(`autosave${btnNum}`, field[btnNum].value);
   };
 }
 
-
-
+//update clock every second
 function updateClock() {
-  var nowTime24h = moment().format('HH:mm:ss')
-  $('.lead').html(nowTime24h);
-
+  var nowTime24h = moment().format("HH:mm:ss");
+  $(".lead").html(nowTime24h);
 }
 
 setInterval(updateClock, 100);
