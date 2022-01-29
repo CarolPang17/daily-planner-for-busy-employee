@@ -1,4 +1,5 @@
 function addRow(i) {
+  //adding table office hour
   var regularHour;
   if (i - 4 > 0) {
     regularHour = i - 4 + " pm";
@@ -8,6 +9,7 @@ function addRow(i) {
     regularHour = i + 8 + " am";
   }
 
+  //create row div
   $(".table").append(`<div class="row row${i}"></div>`);
 
   $(`.row${i}`).append(
@@ -21,6 +23,7 @@ function addRow(i) {
   $(`.row${i}`).append(
     `<div class="col  saveBtn-${i} "><input type="image" class="save-img " id="save-btn-${i}" src="/assets/images/save-as.png" /></div>`
   );
+
 //set current actual hour to be 24hr format
   var nowTime = moment().format("HH");
   var nowHour = parseInt(nowTime);
@@ -43,6 +46,7 @@ function addColor(color, i) {
   $(`#time-block-${i},.typing-box-${i}, .saveBtn-${i}`).addClass(color);
 }
 ////////////////////////////////////////
+
 
 var field = {};
 var fs = {};
@@ -79,3 +83,5 @@ function updateClock() {
 }
 
 setInterval(updateClock, 100);
+
+
